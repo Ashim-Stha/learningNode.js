@@ -9,7 +9,7 @@ const data = [
   },
   {
     id: "recvKMNR3YFw0bEt3",
-    name: "entertainment center",
+    name: "aentertainment center",
     image: {
       url: "https://www.course-api.com/images/store/product-2.jpeg",
     },

@@ -24,7 +24,9 @@ app.get("/api/data/9.99", (req, res) => {
 });
 
 app.get("/api/data/:price", (req, res) => {
+  // console.log(typeof req.params);
   console.log(req.params);
+
   const { price } = req.params; //returns string
   const mapPrice = data.find((data) => data.price === Number(price)); //so change to num
 
@@ -34,6 +36,28 @@ app.get("/api/data/:price", (req, res) => {
   }
   res.send(mapPrice);
 });
+
+app.get("/api/data/v1/query", (req, res) => {
+  // console.log(req.query);
+  const { search, limit } = req.query;
+  // console.log(typeof data);
+  let sortdata = [...data];
+  if (search) {
+    sortdata = sortdata.filter((data) => {
+      return data.name.startsWith(search);
+    });
+  }
+  if (limit) {
+    sortdata = sortdata.slice(0, Number(limit));
+  }
+
+  if (sortdata.length < 1) {
+    return res.status(200).send("not found");
+  }
+  // console.log(typeof sortdata);
+  res.status(200).json(sortdata);
+});
+
 app.listen(5000, () => {
   console.log("sever running");
 });
