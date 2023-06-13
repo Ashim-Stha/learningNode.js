@@ -37,4 +37,13 @@ const data = [
   },
 ];
 
-module.exports = { data };
+const people = [
+  { id: 1, name: "Ashim" },
+  {
+    id: 2,
+    name: "chandrey",
+  },
+  { id: 3, name: "tommy" },
+];
+
+module.exports = { data, people };
